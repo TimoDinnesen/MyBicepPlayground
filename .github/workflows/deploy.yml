@@ -25,4 +25,5 @@ jobs:
           storageAccountName=tpdteststorage4242
           resourceGroupName=tpd-bicep-playground
           deploylocation=swedencentral
+        location: swedencentral
         deploymentName: bicep-deploy
