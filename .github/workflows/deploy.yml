@@ -1,4 +1,4 @@
-name: Deploy Bicep Template at Subscription Scope
+name: Deploy Bicep to Azure Resource Group
 
 on:
   workflow_dispatch:
@@ -12,18 +12,16 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Azure Login
-      uses: azure/login@v2
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Deploy Bicep to subscription scope
-      uses: azure/arm-deploy@v2
+    - name: Deploy Bicep template
+      uses: azure/arm-deploy@v1
       with:
-        scope: subscription
-        template: ./IaC/main.bicep
+        scope: resourcegroup
+        resourceGroupName: rg-bicep-playground
+        template: ./main.bicep
         parameters: >
-          storageAccountName=tpdteststorage4242
-          resourceGroupName=tpd-bicep-playground
-          deploylocation=swedencentral
-        region: swedencentral
-        deploymentName: bicep-deploy
+          storageAccountName=tpdteststor4242
+        deploymentName: rg-storage-deploy
