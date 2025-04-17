@@ -1,4 +1,4 @@
-name: Deploy to Azure
+name: Deploy Bicep Template at Subscription Scope
 
 on:
   workflow_dispatch:
@@ -16,10 +16,13 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Deploy Bicep template
+    - name: Deploy Bicep to subscription scope
       uses: azure/arm-deploy@v1
       with:
-        resourceGroupName: 'my-rg'
-        template: './main.bicep'
-        parameters: 'storageAccountName=mystorageaccount1234'
-        deploymentMode: Incremental
+        scope: subscription
+        template: ./main.bicep
+        parameters: >
+          storageAccountName=mystorageacct1234
+          resourceGroupName=my-bicep-rg
+        location: swedencentral
+        deploymentName: bicep-deploy
