@@ -20,7 +20,7 @@ jobs:
       uses: azure/arm-deploy@v2
       with:
         scope: subscription
-        template: ./main.bicep
+        template: ./IaC/main.bicep
         parameters: >
           storageAccountName=tpdteststorage4242
           resourceGroupName=tpd-bicep-playground
