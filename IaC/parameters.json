@@ -1,0 +1,8 @@
+{
+  "resourceGroupName": {
+    "value": "tpd-bicep-playground"
+  },
+  "storageAccountName": {
+    "value": "tpdteststorage4242"
+  }
+}
