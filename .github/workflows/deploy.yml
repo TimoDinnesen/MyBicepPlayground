@@ -17,7 +17,7 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - name: Deploy Bicep to subscription scope
-      uses: azure/arm-deploy@v1
+      uses: azure/arm-deploy@v2
       with:
         scope: subscription
         template: ./main.bicep
@@ -25,5 +25,5 @@ jobs:
           storageAccountName=tpdteststorage4242
           resourceGroupName=tpd-bicep-playground
           deploylocation=swedencentral
-        location: swedencentral
+        region: swedencentral
         deploymentName: bicep-deploy
