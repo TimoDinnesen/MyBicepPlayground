@@ -9,7 +9,6 @@ resource rg 'Microsoft.Resources/resourceGroups@2022-09-01' = {
 
 resource storageAccount 'Microsoft.Storage/storageAccounts@2022-09-01' = {
   name: storageAccountName
-  scope: rg
   location: deploylocation
   sku: {
     name: 'Standard_LRS'
