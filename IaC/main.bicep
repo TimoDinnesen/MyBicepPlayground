@@ -1,15 +1,9 @@
-param deploylocation string
-param resourceGroupName string
 param storageAccountName string
-
-resource rg 'Microsoft.Resources/resourceGroups@2022-09-01' = {
-  name: resourceGroupName
-  location: deploylocation
-}
+param location string = resourceGroup().location
 
 resource storageAccount 'Microsoft.Storage/storageAccounts@2022-09-01' = {
   name: storageAccountName
-  location: deploylocation
+  location: location
   sku: {
     name: 'Standard_LRS'
   }
@@ -18,3 +12,4 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2022-09-01' = {
     accessTier: 'Hot'
   }
 }
+
