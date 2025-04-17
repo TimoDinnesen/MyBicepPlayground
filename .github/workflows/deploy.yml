@@ -21,7 +21,7 @@ jobs:
       with:
         scope: resourcegroup
         resourceGroupName: rg-bicep-playground
-        template: ./main.bicep
+        template: ./IaC/main.bicep
         parameters: >
           storageAccountName=tpdteststor4242
         deploymentName: rg-storage-deploy
