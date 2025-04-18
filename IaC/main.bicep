@@ -14,7 +14,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2023-05-01' = {
   }
 }
 
-resource fileservice 'Microsoft.Storage/storageAccounts/fileServices@2023-05-01' = {
+resource blobservice 'Microsoft.Storage/storageAccounts/blobServices@2023-05-01' = {
   parent: storageAccount
   name: 'default'
 }
@@ -22,7 +22,7 @@ resource fileservice 'Microsoft.Storage/storageAccounts/fileServices@2023-05-01'
 // Create a blob container inside the storage account
 resource blobContainer 'Microsoft.Storage/storageAccounts/blobServices/containers@2022-09-01' = {
   name: containerName
-  parent: fileservice
+  parent: blobservice
   properties: {
     publicAccess: 'None' // Optional: set to 'Blob' or 'Container' for public access
   }
