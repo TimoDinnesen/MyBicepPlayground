@@ -24,4 +24,5 @@ jobs:
         template: ./IaC/main.bicep
         parameters: >
           storageAccountName=tpdteststor4242
+          containerName=uploads
         deploymentName: rg-storage-deploy
