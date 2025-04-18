@@ -2,7 +2,7 @@ param storageAccountName string
 param location string = resourceGroup().location
 param containerName string
 
-resource storageAccount 'Microsoft.Storage/storageAccounts@2022-09-01' = {
+resource storageAccount 'Microsoft.Storage/storageAccounts@2023-05-01' = {
   name: storageAccountName
   location: location
   sku: {
@@ -14,10 +14,15 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2022-09-01' = {
   }
 }
 
+resource fileservice 'Microsoft.Storage/storageAccounts/fileServices@2023-05-01' = {
+  parent: storageAccount
+  name: 'default'
+}
+
 // Create a blob container inside the storage account
 resource blobContainer 'Microsoft.Storage/storageAccounts/blobServices/containers@2022-09-01' = {
   name: containerName
-  parent: storageAccount
+  parent: fileservice
   properties: {
     publicAccess: 'None' // Optional: set to 'Blob' or 'Container' for public access
   }
